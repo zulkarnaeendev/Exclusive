@@ -1,0 +1,19 @@
+@import "tailwindcss";
+
+@theme {
+  --breakpoint-*: initial;
+  --breakpoint-sm: 576px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 1024px;
+  --breakpoint-xl: 1170px;
+  --color-reddish: #DB4444;
+}
+
+@utility container {
+  margin-inline: auto;
+}
+
+.slick-dots .slick-active div{
+  background-color: red;
+  border: 2px solid white;
+}
