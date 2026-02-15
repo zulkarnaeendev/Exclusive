@@ -6,7 +6,10 @@ import Button from "./Button";
 import Dog from "../assets/Dog.png";
 import Camera from "../assets/Camera.png";
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa6";
+<<<<<<< HEAD
 import { NavLink } from "react-router";
+=======
+>>>>>>> de9f8e4bc59c9b427e938c22dde1da0b6a0d864e
 
 const MoreProduct = () => {
   function SampleNextArrow(props) {
@@ -147,9 +150,13 @@ const MoreProduct = () => {
           </div>
         </Slider>
         <div className="container flex justify-center mt-9.25">
+<<<<<<< HEAD
           <NavLink to="/shop">
             <Button btn="View All Products" />
           </NavLink>
+=======
+          <Button btn="View All Products" />
+>>>>>>> de9f8e4bc59c9b427e938c22dde1da0b6a0d864e
         </div>
       </div>
     </>

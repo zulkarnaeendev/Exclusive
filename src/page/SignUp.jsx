@@ -32,7 +32,11 @@ const SignUp = () => {
             </div>
             <div className="flex gap-4 justify-center">
               <p>Already have account?</p>
+<<<<<<< HEAD
               <NavLink to='/login' className='font-medium'>Log in</NavLink>
+=======
+              <NavLink to='/Login' className='font-medium'>Log in</NavLink>
+>>>>>>> de9f8e4bc59c9b427e938c22dde1da0b6a0d864e
             </div>
           </div>
         </div>
