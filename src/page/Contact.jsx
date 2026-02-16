@@ -1,5 +1,4 @@
 import React from 'react'
-<<<<<<< HEAD
 import BreadCrump from '../components/BreadCrump'
 
 const Contact = () => {
@@ -11,12 +10,6 @@ const Contact = () => {
         <div className=""></div>
       </div>
     </div>
-=======
-
-const Contact = () => {
-  return (
-    <div>Contact</div>
->>>>>>> de9f8e4bc59c9b427e938c22dde1da0b6a0d864e
   )
 }
 

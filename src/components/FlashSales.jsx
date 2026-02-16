@@ -6,10 +6,7 @@ import Frame from "../assets/Frame 570.png";
 import Button from "./Button";
 import Slider from "react-slick";
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa6";
-<<<<<<< HEAD
 import { NavLink } from "react-router";
-=======
->>>>>>> de9f8e4bc59c9b427e938c22dde1da0b6a0d864e
 
 const FlashSales = () => {
   function SampleNextArrow(props) {
@@ -20,11 +17,7 @@ const FlashSales = () => {
         // style={{ ...style, display: "block", background: "red" }}
         onClick={onClick}
       >
-<<<<<<< HEAD
         <FaArrowRight className="text-[20px] text-black" />
-=======
-          <FaArrowRight className="text-[20px] text-black" />
->>>>>>> de9f8e4bc59c9b427e938c22dde1da0b6a0d864e
       </div>
     );
   }
@@ -37,11 +30,7 @@ const FlashSales = () => {
         // style={{ ...style, display: "block", background: "green" }}
         onClick={onClick}
       >
-<<<<<<< HEAD
         <FaArrowLeft className="text-[20px] text-black" />
-=======
-          <FaArrowLeft className="text-[20px] text-black" />
->>>>>>> de9f8e4bc59c9b427e938c22dde1da0b6a0d864e
       </div>
     );
   }
@@ -153,7 +142,6 @@ const FlashSales = () => {
           />
         </Slider>
         <div className="container flex justify-center mt-9.25">
-<<<<<<< HEAD
           <NavLink to="/shop">
             <Button btn="View All Products" />
         </NavLink>
@@ -162,14 +150,6 @@ const FlashSales = () => {
         <hr />
       </div>
     </div >
-=======
-          <Button btn="View All Products" />
-        </div>
-        <div className="container mt-15 mb-20">
-          <hr />
-        </div>
-      </div>
->>>>>>> de9f8e4bc59c9b427e938c22dde1da0b6a0d864e
     </>
   );
 };

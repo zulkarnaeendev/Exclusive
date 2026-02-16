@@ -1,10 +1,7 @@
 import React, { useEffect, useState } from "react";
 import BigFrame from "../assets/Frame 600.png";
 import { countDownDateAndTime } from "countdown-date-time";
-<<<<<<< HEAD
 import { NavLink } from "react-router";
-=======
->>>>>>> de9f8e4bc59c9b427e938c22dde1da0b6a0d864e
 
 const LimitedExperience = () => {
   const conduct_date = "2026-03-25 16:54:00";
@@ -62,13 +59,9 @@ const LimitedExperience = () => {
           </div>
         </div>
         <div className="bg-[#47B486] pt-4 pb-4 pr-12 pl-12 w-fit rounded-sm text-middle cursor-pointer">
-<<<<<<< HEAD
           <NavLink to="/shop">
             <button className="font-medium text-white">Buy Now!</button>
           </NavLink>
-=======
-          <button className="font-medium text-white">Buy Now!</button>
->>>>>>> de9f8e4bc59c9b427e938c22dde1da0b6a0d864e
         </div>
       </div>
     </div>
