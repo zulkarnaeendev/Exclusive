@@ -5,7 +5,7 @@ import Button from '../components/Button';
 import { NavLink } from 'react-router';
 import { useSelector, useDispatch } from 'react-redux';
 import { useState, useEffect } from 'react';
-import { updatequantity } from '../slices/roductslice';
+import { updatequantity, clearCart } from '../slices/roductslice';
 
 const Cart = () => {
   const cartdata = useSelector((state) => state.allProduct.cart);
@@ -63,15 +63,7 @@ const Cart = () => {
         <div className=' pt-4 pb-4 pr-12 pl-12 w-fit rounded-sm text-middle border-gray-500 border-1 cursor-pointer'>
           <button
             className='font-medium cursor-pointer'
-            onClick={() => {
-              // dispatch updates for items whose quantity differs
-              cartdata.forEach(item => {
-                const q = quantities[item.id] || 1;
-                if ((item.quantity || 1) !== q) {
-                  dispatch(updatequantity({ id: item.id, quantity: q }));
-                }
-              });
-            }}
+            onClick={() => dispatch(clearCart())}
           >
             Update Cart
           </button>

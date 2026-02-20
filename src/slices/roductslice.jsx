@@ -33,7 +33,6 @@ export const roductSlice = createSlice({
             const product = action.payload;
             const idx = state.cart.findIndex(item => item.id === product.id);
             if (idx > -1) {
-                // if already in cart, increment quantity
                 const existing = state.cart[idx];
                 existing.quantity = (existing.quantity || 1) + 1;
                 state.cart[idx] = existing;
@@ -57,9 +56,14 @@ export const roductSlice = createSlice({
             localStorage.setItem('cartItems', JSON.stringify(state.cart));
         },
 
+        clearCart: (state) => {
+            state.cart = [];
+            localStorage.setItem('cartItems', JSON.stringify(state.cart));
+        },
+
     },
 })
 
-export const { productreducer, categoryreducer, cartreducer, updatequantity, removecart } = roductSlice.actions
+export const { productreducer, categoryreducer, cartreducer, updatequantity, removecart, clearCart } = roductSlice.actions
 
 export default roductSlice.reducer

@@ -16,6 +16,10 @@ const Navbar = () => {
     navigate('/cart');
   }
 
+  const handelheart = () => {
+    navigate('/wishlist');
+  }
+
   return (
     <>
       <nav className="sticky top-0 z-50 bg-white shadow-md">
@@ -49,7 +53,7 @@ const Navbar = () => {
               <img src={SearchIcon} alt="search" className="w-6 h-6" />
             </div>
             <div className="flex gap-4">
-              <div className="">
+              <div onClick={handelheart} className="cursor-pointer">
                 <img src={UserIcon} alt="user" className="w-8 h-8 " />
                 <span className="w-4 h-4 rounded-full bg-reddish text-white"></span>
               </div>

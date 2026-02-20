@@ -14,6 +14,7 @@ import Login from './page/Login';
 import Cart from './page/Cart';
 import { store } from './Store';
 import ProductDetail from './page/ProductDetail';
+import Wishlist from './page/Wishlist';
 
 
 const Router = createBrowserRouter([
@@ -25,6 +26,7 @@ const Router = createBrowserRouter([
       { path: "shop", Component: Shop },
       { path: "Productdetail/:id", Component: ProductDetail },
       { path: "cart", Component: Cart},
+      { path: "wishlist", Component: Wishlist},
       { path: "contact", Component: Contact },
       { path: "about", Component: About },
       { path: "signup", Component: SignUp },
