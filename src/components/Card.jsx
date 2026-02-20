@@ -2,17 +2,21 @@ import React from "react";
 import { FaRegHeart, FaEye } from "react-icons/fa";
 import { Rate } from 'antd';
 import { useNavigate } from "react-router";
+import { useDispatch } from "react-redux";
+import { cartreducer } from "../slices/roductslice";
 
-const Card = ({ img, Name, prevprize, prize, discount, review, display, id }) => {
+const Card = ({ img, Name, prevprize, prize, discount, review, display, id, wholeproduct }) => {
 
   let navigate = useNavigate();
+
+  const dispatch = useDispatch();
 
   const handleProductDetail = () => {
     navigate(`/Productdetail/${id}`);
   };
 
   const handelAddToCart = () => {
-
+    dispatch(cartreducer(wholeproduct));
   }
 
   return (
@@ -37,8 +41,8 @@ const Card = ({ img, Name, prevprize, prize, discount, review, display, id }) =>
           </div>
         </div>
         {display && (
-          <div className="absolute bottom-0 w-full h-10 bg-black opacity-0 group-hover:opacity-100 transition-opacity duration-300 cursor-pointer">
-            <button className="text-white py-2 px-22 h-full font-medium cursor-pointer" onClick={handelAddToCart}>
+          <div onClick={handelAddToCart} className="absolute bottom-0 w-full h-10 bg-black opacity-0 group-hover:opacity-100 transition-opacity duration-300 cursor-pointer">
+            <button className="text-white py-2 px-22 h-full font-medium cursor-pointer">
               Add To Cart
             </button>
           </div>

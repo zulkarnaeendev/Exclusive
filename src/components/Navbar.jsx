@@ -3,19 +3,28 @@ import Logo from "../assets/logo.png";
 import SearchIcon from "../assets/search.png";
 import UserIcon from "../assets/Heart.png";
 import CartIcon from "../assets/Cart.png";
-import { NavLink } from "react-router";
+import { NavLink, useNavigate } from "react-router";
+import { useSelector } from "react-redux";
 
 const Navbar = () => {
+
+  const cartdata = useSelector((state) => state.allProduct.cart);
+
+  let navigate = useNavigate();
+
+  const handelcart = () => {
+    navigate('/cart');
+  }
+
   return (
     <>
-      <nav>
+      <nav className="sticky top-0 z-50 bg-white shadow-md">
         <div className="container flex pt-7 pb-6.75 justify-between items-center">
           <img
             src={Logo}
             alt="Tech E-commerce Logo"
             className="pt-1.75 pb-1.75"
           />
-
           <ul className="flex gap-12 items-center font-medium text-base">
             <NavLink to="/" end className=" hover:border-b-2 border-gray-500 pb-0.5 cursor-pointer">
               Home
@@ -26,11 +35,10 @@ const Navbar = () => {
             <NavLink to="/about" className=" hover:border-b-2 border-gray-500 pb-0.5 cursor-pointer">
               About
             </NavLink>
-            <NavLink to="/signup"  className=" hover:border-b-2 border-gray-500 pb-0.5 cursor-pointer">
+            <NavLink to="/signup" className=" hover:border-b-2 border-gray-500 pb-0.5 cursor-pointer">
               Sign Up
             </NavLink>
           </ul>
-
           <div className="flex gap-6 items-center">
             <div className="flex gap-8.5 items-center bg-[#F5F5F5] pt-1.75 pb-1.75 pr-3 pl-5">
               <input
@@ -41,8 +49,14 @@ const Navbar = () => {
               <img src={SearchIcon} alt="search" className="w-6 h-6" />
             </div>
             <div className="flex gap-4">
-              <img src={UserIcon} alt="user" className="w-8 h-8" />
-              <img src={CartIcon} alt="cart" className="w-8 h-8" />
+              <div className="">
+                <img src={UserIcon} alt="user" className="w-8 h-8 " />
+                <span className="w-4 h-4 rounded-full bg-reddish text-white"></span>
+              </div>
+              <div onClick={handelcart} className="relative cursor-pointer">
+                <img src={CartIcon} alt="cart" className="w-8 h-8" />
+                <span className="flex justify-center items-center w-4 h-4  py-2.5 px-2.5 rounded-full bg-reddish text-white absolute -top-1 -right-1 z-50">{cartdata.length}</span>
+              </div>
             </div>
           </div>
         </div>

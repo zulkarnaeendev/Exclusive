@@ -16,6 +16,7 @@ const Page = ({ itemsPerPage, onPageChange, selectedPage = 0 }) => {
                     currentItems.map((item, idx) => (
                         <Card
                             key={idx}
+                            wholeproduct={item}
                             id={item.id}
                             img={item.thumbnail}
                             discount={item.discountPercentage ? item.discountPercentage + '%' : null}
