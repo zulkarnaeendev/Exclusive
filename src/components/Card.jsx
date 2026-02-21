@@ -1,5 +1,5 @@
-import React from "react";
-import { FaRegHeart, FaEye } from "react-icons/fa";
+import React, { useState } from "react";
+import { FaRegHeart, FaEye, FaHeart } from "react-icons/fa";
 import { Rate } from 'antd';
 import { useNavigate } from "react-router";
 import { useDispatch } from "react-redux";
@@ -19,6 +19,13 @@ const Card = ({ img, Name, prevprize, prize, discount, review, display, id, whol
     dispatch(cartreducer(wholeproduct));
   }
 
+  const [liked, setLiked] = useState(false);
+
+  const handelheart = (e) => {
+    e.stopPropagation();
+    setLiked((s) => !s);
+  };
+
   return (
     <div className="container mt-10 w-67.5 group">
       <div className="relative overflow-hidden bg-secondary rounded-md">
@@ -34,8 +41,10 @@ const Card = ({ img, Name, prevprize, prize, discount, review, display, id, whol
         )}
         <div className="absolute top-4 right-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
           {showHeart && (
-            <div className="bg-white rounded-full w-8.5 h-8.5 flex justify-center items-center mb-2 hover:bg-red-500 hover:text-white transition-colors cursor-pointer">
-              <FaRegHeart className="text-[20px]" />
+            <div
+              onClick={handelheart}
+              className={`rounded-full w-8.5 h-8.5 flex justify-center items-center mb-2 transition-colors cursor-pointer ${liked ? 'bg-red-500 text-white' : 'bg-white hover:bg-red-500 hover:text-white'}`}>
+              {liked ? <FaHeart className="text-[20px]" /> : <FaRegHeart className="text-[20px]" />}
             </div>
           )}
           <div className="bg-white rounded-full w-8.5 h-8.5 flex justify-center items-center hover:bg-red-500 hover:text-white transition-colors cursor-pointer">

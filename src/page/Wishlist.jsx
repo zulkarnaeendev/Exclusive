@@ -4,6 +4,7 @@ import Speaker from "../assets/speaker.png";
 import Frame from "../assets/Frame 570.png"
 import Card from '../components/Card'
 import { NavLink } from 'react-router';
+import { useSelector } from 'react-redux';
 
 const Wishlist = () => {
 
@@ -12,6 +13,8 @@ const Wishlist = () => {
         slidesToShow: 4,
         slidesToScroll: 1,
     };
+
+    const cartdata = useSelector((state) => state.allProduct.cart);
 
     return (
         <div className='container mt-20 mb-35'>
@@ -24,72 +27,21 @@ const Wishlist = () => {
                     <button className='font-medium cursor-pointer'>Move All To Bag</button>
                 </div>
             </div>
-            <Slider {...settings} className="container flex">
-                <Card
-                    img={Speaker}
-                    Name="HAVIT HV-G92 Gamepad"
-                    prize="$120"
-                    prevprize="$160"
-                    rating="88"
-                    display={true}
-                />
-                <Card
-                    img={Speaker}
-                    Name="HAVIT HV-G92 Gamepad"
-                    prize="$120"
-                    prevprize="$160"
-                    rating="88"
-                    display={true}
-                />
-                <Card
-                    img={Speaker}
-                    Name="HAVIT HV-G92 Gamepad"
-                    prize="$120"
-                    prevprize="$160"
-                    rating="88"
-                    display={true}
-                />
-                <Card
-                    img={Speaker}
-                    Name="HAVIT HV-G92 Gamepad"
-                    prize="$120"
-                    prevprize="$160"
-                    rating="88"
-                    display={true}
-                />
-                <Card
-                    img={Speaker}
-                    Name="HAVIT HV-G92 Gamepad"
-                    prize="$120"
-                    prevprize="$160"
-                    rating="88"
-                    display={true}
-                />
-                <Card
-                    img={Speaker}
-                    Name="HAVIT HV-G92 Gamepad"
-                    prize="$120"
-                    prevprize="$160"
-                    rating="88"
-                    display={true}
-                />
-                <Card
-                    img={Speaker}
-                    Name="HAVIT HV-G92 Gamepad"
-                    prize="$120"
-                    prevprize="$160"
-                    rating="88"
-                    display={true}
-                />
-                <Card
-                    img={Speaker}
-                    Name="HAVIT HV-G92 Gamepad"
-                    prize="$120"
-                    prevprize="$160"
-                    rating="88"
-                    display={true}
-                />
-            </Slider>
+            {cartdata.length === 0 ?
+                <div className='flex flex-col items-center gap-6 mt-20'>
+                    <h1 className='text-[20px]'>Your Wishlist is Empty</h1>
+                </div>
+                : <div className="mt-20">
+                    <Card
+                        img={Speaker}
+                        Name="HAVIT HV-G92 Gamepad"
+                        prize="$120"
+                        prevprize="$160"
+                        rating="88"
+                        display={true}
+                    />
+                </div>}
+
             <div className="mt-20">
                 <div className="container flex gap-21.75 items-center justify-between">
                     <div className="flex gap-6 items-center">
