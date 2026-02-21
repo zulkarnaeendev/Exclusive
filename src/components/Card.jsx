@@ -5,7 +5,7 @@ import { useNavigate } from "react-router";
 import { useDispatch } from "react-redux";
 import { cartreducer } from "../slices/roductslice";
 
-const Card = ({ img, Name, prevprize, prize, discount, review, display, id, wholeproduct }) => {
+const Card = ({ img, Name, prevprize, prize, discount, review, display, id, wholeproduct, showHeart = true }) => {
 
   let navigate = useNavigate();
 
@@ -33,9 +33,11 @@ const Card = ({ img, Name, prevprize, prize, discount, review, display, id, whol
           </div>
         )}
         <div className="absolute top-4 right-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-          <div className="bg-white rounded-full w-8.5 h-8.5 flex justify-center items-center mb-2 hover:bg-red-500 hover:text-white transition-colors cursor-pointer">
-            <FaRegHeart className="text-[20px]" />
-          </div>
+          {showHeart && (
+            <div className="bg-white rounded-full w-8.5 h-8.5 flex justify-center items-center mb-2 hover:bg-red-500 hover:text-white transition-colors cursor-pointer">
+              <FaRegHeart className="text-[20px]" />
+            </div>
+          )}
           <div className="bg-white rounded-full w-8.5 h-8.5 flex justify-center items-center hover:bg-red-500 hover:text-white transition-colors cursor-pointer">
             <FaEye className="text-[20px]" onClick={handleProductDetail} />
           </div>
