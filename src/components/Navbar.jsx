@@ -9,6 +9,9 @@ import { useSelector } from "react-redux";
 const Navbar = () => {
 
   const cartdata = useSelector((state) => state.allProduct.cart);
+  const wishlistdata = useSelector((state) => state.allProduct.wishlist);
+
+
 
   let navigate = useNavigate();
 
@@ -52,19 +55,22 @@ const Navbar = () => {
               />
               <img src={SearchIcon} alt="search" className="w-6 h-6" />
             </div>
-            <div className="flex gap-4">
-              <div onClick={handelheart} className="cursor-pointer">
-                <img src={UserIcon} alt="user" className="w-8 h-8 " />
-                <span className="w-4 h-4 rounded-full bg-reddish text-white"></span>
+
+              <div onClick={handelheart} className="relative cursor-pointer">
+                <img src={UserIcon} alt="user" className="w-8 h-8" />
+                <span className="flex justify-center items-center w-5 h-5 rounded-full bg-reddish text-white text-[10px] absolute -top-1 -right-1 z-10">
+                  {wishlistdata.length}
+                </span>
               </div>
               <div onClick={handelcart} className="relative cursor-pointer">
                 <img src={CartIcon} alt="cart" className="w-8 h-8" />
-                <span className="flex justify-center items-center w-4 h-4  py-2.5 px-2.5 rounded-full bg-reddish text-white absolute -top-1 -right-1 z-50">{cartdata.length}</span>
+                <span className="flex justify-center items-center w-5 h-5 rounded-full bg-reddish text-white text-[10px] absolute -top-1 -right-1 z-10">
+                  {cartdata.length}
+                </span>
               </div>
             </div>
           </div>
-        </div>
-      </nav>
+        </nav>
       <hr className="font-thin bg-gray-300 h-0.5" />
     </>
   );

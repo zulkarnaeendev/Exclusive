@@ -3,7 +3,7 @@ import { FaRegHeart, FaEye, FaHeart } from "react-icons/fa";
 import { Rate } from 'antd';
 import { useNavigate } from "react-router";
 import { useDispatch } from "react-redux";
-import { cartreducer } from "../slices/roductslice";
+import { cartreducer, wishlistReducer } from "../slices/roductslice";
 
 const Card = ({ img, Name, prevprize, prize, discount, review, display, id, wholeproduct, showHeart = true }) => {
 
@@ -21,9 +21,9 @@ const Card = ({ img, Name, prevprize, prize, discount, review, display, id, whol
 
   const [liked, setLiked] = useState(false);
 
-  const handelheart = (e) => {
-    e.stopPropagation();
-    setLiked((s) => !s);
+  const handelheart = () => {
+    dispatch(wishlistReducer(wholeproduct));
+    setLiked(!liked);
   };
 
   return (

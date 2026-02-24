@@ -11,9 +11,22 @@ const getSavedCart = () => {
     }
 }
 
+const wishlistSaved = () => {
+    try {
+        const raw = localStorage.getItem('wishlist');
+        if (!raw) return [];
+        const parsed = JSON.parse(raw);
+        return Array.isArray(parsed) ? parsed : [];
+    } catch (e) {
+        return [];
+    }
+}
+
 const initialState = {
     value: [],
     cart: getSavedCart(),
+    wishlist: wishlistSaved(),
+
 }
 
 export const roductSlice = createSlice({
@@ -60,10 +73,26 @@ export const roductSlice = createSlice({
             state.cart = [];
             localStorage.setItem('cartItems', JSON.stringify(state.cart));
         },
-
-    },
+        wishlistReducer: (state, action) => {
+            const product = action.payload;
+            const idx = state.wishlist.findIndex(item => item.id === product.id);
+            if (idx > -1) {
+                const existing = state.wishlist[idx];
+                existing.quantity = (existing.quantity || 1) + 1;
+                state.wishlist[idx] = existing;
+            } else {
+                state.wishlist.push({ ...product, quantity: 1 });
+            }
+            localStorage.setItem('wishlist', JSON.stringify(state.wishlist));
+        },
+        removeWishlist: (state, action) => {
+            const idx = state.wishlist.findIndex(item => item.id === action.payload);
+            if (idx > -1) state.wishlist.splice(idx, 1);
+            localStorage.setItem('wishlist', JSON.stringify(state.wishlist));
+        },
+    }
 })
 
-export const { productreducer, categoryreducer, cartreducer, updatequantity, removecart, clearCart } = roductSlice.actions
+export const { productreducer, categoryreducer, cartreducer, updatequantity, removecart, clearCart, wishlistReducer, removeWishlist } = roductSlice.actions
 
 export default roductSlice.reducer
