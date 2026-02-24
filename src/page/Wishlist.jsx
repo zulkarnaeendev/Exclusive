@@ -14,7 +14,6 @@ const Wishlist = () => {
     };
 
     const cartdata = useSelector((state) => state.allProduct.wishlist);
-    console.log(cartdata)
 
     return (
         <div className='container mt-20 mb-35'>
@@ -28,15 +27,18 @@ const Wishlist = () => {
                 </div>
             </div>
             <Slider {...settings} className="container flex">
-            {cartdata.map((item, idx) => {
+                {cartdata.map((item, idx) => {
                     const itemPrice = Math.round(item.price - (item.discountPercentage || 0) * item.price / 100);
                     return (
                         <Card
                             id={item.id}
                             key={`${item.id}-${idx}`}
-                            thumbnail={item.thumbnail}
-                            title={item.title}
-                            price={itemPrice}
+                            img={item.thumbnail}
+                            Name={item.title}
+                            prize={itemPrice}
+                            showEye={false}
+                            showHeart={false}
+                            showDelete={true}
                         />
                     );
                 })}

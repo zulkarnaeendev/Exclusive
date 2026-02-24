@@ -1,30 +1,85 @@
 import React, { useState } from "react";
-import { FaRegHeart, FaEye, FaHeart } from "react-icons/fa";
+import { FaRegHeart, FaEye, FaHeart, FaTrash } from "react-icons/fa";
 import { Rate } from 'antd';
 import { useNavigate } from "react-router";
-import { useDispatch } from "react-redux";
-import { cartreducer, wishlistReducer } from "../slices/roductslice";
+import { useDispatch, useSelector } from "react-redux";
+import { cartreducer, wishlistReducer, removeWishlist } from "../slices/roductslice";
+import { toast, Bounce } from "react-toastify";
 
-const Card = ({ img, Name, prevprize, prize, discount, review, display, id, wholeproduct, showHeart = true }) => {
+const Card = ({ img, Name, prevprize, prize, discount, review, display, id, wholeproduct, showHeart = true, showEye = true, showDelete = false, onDelete }) => {
 
   let navigate = useNavigate();
 
   const dispatch = useDispatch();
+  const cartdata = useSelector((state) => state.allProduct.cart);
 
   const handleProductDetail = () => {
     navigate(`/Productdetail/${id}`);
   };
 
+  const notify = (cartreducer) => {toast.success('Your Product Has Been Successfully Added To The Cart!', {
+    position: "top-center",
+      autoClose: 2500,
+      hideProgressBar: false,
+      closeOnClick: false,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "colored",
+      transition: Bounce,
+  })};
+
+  const warningNotify = () => {
+    toast.warning('This Product Is Already In Your Cart!', {
+      position: "top-center",
+      autoClose: 2500,
+      hideProgressBar: false,
+      closeOnClick: false,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "colored",
+      transition: Bounce,
+    });
+  };
+
   const handelAddToCart = () => {
-    dispatch(cartreducer(wholeproduct));
+    const itemExists = cartdata.some(item => item.id === id);
+    
+    if (itemExists) {
+      warningNotify();
+    } else {
+      dispatch(cartreducer(wholeproduct));
+      notify(cartreducer(idx));
+    }
   }
 
   const [liked, setLiked] = useState(false);
 
+  const Heartnotify = () => {
+    toast.success('Your Product Has Been Successfully Added To The Wishlist!', {
+      position: "top-center",
+      autoClose: 2500,
+      hideProgressBar: false,
+      closeOnClick: false,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "colored",
+      transition: Bounce,
+  })};
+
   const handelheart = () => {
     dispatch(wishlistReducer(wholeproduct));
     setLiked(!liked);
+    Heartnotify();
   };
+
+  const handleDelete = () => {
+    dispatch(removeWishlist(id));
+    if (onDelete) onDelete(id);
+  };
+
 
   return (
     <div className="container mt-10 w-67.5 group">
@@ -47,9 +102,18 @@ const Card = ({ img, Name, prevprize, prize, discount, review, display, id, whol
               {liked ? <FaHeart className="text-[20px]" /> : <FaRegHeart className="text-[20px]" />}
             </div>
           )}
-          <div className="bg-white rounded-full w-8.5 h-8.5 flex justify-center items-center hover:bg-red-500 hover:text-white transition-colors cursor-pointer">
-            <FaEye className="text-[20px]" onClick={handleProductDetail} />
-          </div>
+          {showDelete && (
+            <div
+              onClick={handleDelete}
+              className="bg-red-500 rounded-full w-8.5 h-8.5 flex justify-center items-center text-white hover:bg-red-600 transition-colors cursor-pointer mb-2">
+              <FaTrash className="text-[16px]" />
+            </div>
+          )}
+          {showEye && (
+            <div className="bg-white rounded-full w-8.5 h-8.5 flex justify-center items-center hover:bg-red-500 hover:text-white transition-colors cursor-pointer">
+              <FaEye className="text-[20px]" onClick={handleProductDetail} />
+            </div>
+          )}
         </div>
         {display && (
           <div onClick={handelAddToCart} className="absolute bottom-0 w-full h-10 bg-black opacity-0 group-hover:opacity-100 transition-opacity duration-300 cursor-pointer">
