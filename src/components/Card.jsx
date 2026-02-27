@@ -12,12 +12,13 @@ const Card = ({ img, Name, prevprize, prize, discount, review, display, id, whol
 
   const dispatch = useDispatch();
   const cartdata = useSelector((state) => state.allProduct.cart);
+  const wishlistdata = useSelector((state) => state.allProduct.wishlist);
 
   const handleProductDetail = () => {
     navigate(`/Productdetail/${id}`);
   };
 
-  const notify = (cartreducer) => {toast.success('Your Product Has Been Successfully Added To The Cart!', {
+  const notify = () => {toast.success('Your Product Has Been Successfully Added To The Cart!', {
     position: "top-center",
       autoClose: 2500,
       hideProgressBar: false,
@@ -50,7 +51,7 @@ const Card = ({ img, Name, prevprize, prize, discount, review, display, id, whol
       warningNotify();
     } else {
       dispatch(cartreducer(wholeproduct));
-      notify(cartreducer(idx));
+      notify();
     }
   }
 
@@ -69,10 +70,30 @@ const Card = ({ img, Name, prevprize, prize, discount, review, display, id, whol
       transition: Bounce,
   })};
 
+  const HeartWarningNotify = () => {
+    toast.warning('This Product Is Already In Your Wishlist!', {
+      position: "top-center",
+      autoClose: 2500,
+      hideProgressBar: false,
+      closeOnClick: false,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "colored",
+      transition: Bounce,
+    });
+  };
+
   const handelheart = () => {
-    dispatch(wishlistReducer(wholeproduct));
-    setLiked(!liked);
-    Heartnotify();
+    const itemExists = wishlistdata.some(item => item.id === id);
+    
+    if (itemExists) {
+      HeartWarningNotify();
+    } else {
+      dispatch(wishlistReducer(wholeproduct));
+      setLiked(!liked);
+      Heartnotify();
+    }
   };
 
   const handleDelete = () => {

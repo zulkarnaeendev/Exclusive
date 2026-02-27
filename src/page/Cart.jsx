@@ -57,10 +57,10 @@ const Cart = () => {
       </div>
 
       <div className="flex justify-between mb-20">
-        <NavLink to='/shop' className=' pt-4 pb-4 pr-12 pl-12 w-fit rounded-sm text-middle border-gray-500 border-1'>
+        <NavLink to='/shop' className=' pt-4 pb-4 pr-12 pl-12 w-fit rounded-sm text-middle border-gray-500 border'>
           <button className='font-medium cursor-pointer'>Return To Shop</button>
         </NavLink>
-        <div className=' pt-4 pb-4 pr-12 pl-12 w-fit rounded-sm text-middle border-gray-500 border-1 cursor-pointer'>
+        <div className=' pt-4 pb-4 pr-12 pl-12 w-fit rounded-sm text-middle border-gray-500 border cursor-pointer'>
           <button
             className='font-medium cursor-pointer'
             onClick={() => dispatch(clearCart())}
@@ -71,7 +71,7 @@ const Cart = () => {
       </div>
       <div className="flex justify-between">
         <div className="flex gap-4 h-14">
-          <input type="text" placeholder='Coupon Code' className='w-75 border-gray-500 border-1 pl-6 rounded-sm' />
+          <input type="text" placeholder='Coupon Code' className='w-75 border-gray-500 border pl-6 rounded-sm' />
           <Button btn='Apply Coupon' />
         </div>
         <div className="px-6 py-8 border-1.5 border w-117.5 h-81 rounded-sm">

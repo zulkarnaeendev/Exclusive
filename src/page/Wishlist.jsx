@@ -22,7 +22,7 @@ const Wishlist = () => {
                     <h1 className='text-[20px]'>Wishlist</h1>
                     <h1 className='text-[20px]'>({cartdata.length})</h1>
                 </div>
-                <div className=' pt-4 pb-4 pr-12 pl-12 w-fit rounded-sm text-middle border-gray-500 border-1 cursor-pointer'>
+                <div className=' pt-4 pb-4 pr-12 pl-12 w-fit rounded-sm text-middle border-gray-500 border cursor-pointer'>
                     <button className='font-medium cursor-pointer'>Move All To Bag</button>
                 </div>
             </div>
@@ -52,7 +52,7 @@ const Wishlist = () => {
                             Just For You
                         </h6>
                     </div>
-                    <NavLink to='/shop' className=' pt-4 pb-4 pr-12 pl-12 w-fit rounded-sm text-middle border-gray-500 border-1 cursor-pointer'>
+                    <NavLink to='/shop' className=' pt-4 pb-4 pr-12 pl-12 w-fit rounded-sm text-middle border-gray-500 border cursor-pointer'>
                         <button className='font-medium cursor-pointer'>See All</button>
                     </NavLink>
                 </div>
